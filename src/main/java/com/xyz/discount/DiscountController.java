@@ -1,6 +1,5 @@
 package com.xyz.discount;
 
-import java.util.Date;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,15 +29,13 @@ public class DiscountController {
 	}
 
 	@RequestMapping("/theater/{theaterId}/city/{cityId}")
-	public Integer getDiscount(@PathVariable("theaterId") Integer theaterId, @PathVariable("cityId") Integer cityId) {
+	public String[] getDiscount(@PathVariable("theaterId") Integer theaterId, @PathVariable("cityId") Integer cityId) {
 
 		logger.info("DiscountController.getDiscount() invoked with: " + theaterId + ", " + cityId);
-		Date date = new Date();
-		Integer discountPercentage = discountService.getDiscount(theaterId, cityId);
-		logger.info("discountPercentage for the theaterId - cityId: " + theaterId + "-" + cityId + " is "
-				+ discountPercentage);
+		String[] discounts = discountService.getDiscount(theaterId, cityId);
+		logger.info("discount details:\n" + discounts);
 
-		return discountPercentage;
+		return discounts;
 	}
 
 }

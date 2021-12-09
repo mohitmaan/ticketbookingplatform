@@ -2,5 +2,5 @@ package com.xyz.discount;
 
 public interface DiscountService {
 
-	public Integer getDiscount(Integer theaterId, Integer cityId);
+	public String[] getDiscount(Integer theaterId, Integer cityId);
 }
